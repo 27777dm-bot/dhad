@@ -1,621 +1,444 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>منصة ضاد | لعلوم اللغة العربية وآدابها</title>
-  <!-- Google Fonts: Amiri & Noto Naskh Arabic -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --bg-parchment: #FBF8F2;
-      --bg-card: #F4EFE6;
-      --border-color: #E2D7C5;
-      --brown-primary: #5C3821;
-      --brown-dark: #3A2011;
-      --gold-accent: #C49746;
-      --gold-light: #DFBE7B;
-      --text-main: #221C16;
-      --text-muted: #6B5B4F;
-      --radius-lg: 22px;
-      --radius-md: 14px;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>منصة ضاد | لعلوم اللغة العربية وآدابها</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-parchment: #FBF8F2;
+            --bg-card: #F4EFE6;
+            --border-color: #E2D7C5;
+            --brown-primary: #5C3821;
+            --brown-dark: #3A2011;
+            --gold-accent: #C49746;
+            --gold-light: #DFBE7B;
+            --text-main: #221C16;
+            --text-muted: #6B5B4F;
+            --radius-lg: 22px;
+            --radius-md: 14px;
+        }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Noto Naskh Arabic', 'Amiri', serif;
-      -webkit-tap-highlight-color: transparent;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Naskh Arabic', serif;
+        }
 
-    body {
-      background-color: var(--bg-parchment);
-      color: var(--text-main);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-bottom: 50px;
-    }
+        body {
+            background-color: var(--bg-parchment);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
 
-    .container {
-      width: 100%;
-      max-width: 900px;
-      padding: 16px;
-    }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
 
-    /* Top Navigation Bar */
-    header {
-      background: #FAF6EF;
-      border-bottom: 1.5px solid var(--border-color);
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 4px 15px rgba(92, 56, 33, 0.05);
-    }
+        header {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(92, 56, 33, 0.05);
+        }
 
-    .nav-content {
-      width: 100%;
-      max-width: 900px;
-      padding: 12px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
 
-    .brand-section {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--brown-primary);
+            color: var(--gold-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Amiri', serif;
+            font-size: 24px;
+            font-weight: bold;
+        }
 
-    /* App Logo: Brown Circle with White Dhad */
-    .dhad-logo {
-      width: 48px;
-      height: 48px;
-      background: radial-gradient(circle at 35% 35%, #76472A, var(--brown-primary));
-      border: 2px solid var(--gold-accent);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #FFFFFF;
-      font-family: 'Amiri', serif;
-      font-size: 26px;
-      font-weight: bold;
-      box-shadow: 0 3px 8px rgba(92, 56, 33, 0.25);
-    }
+        .logo-text h1 {
+            font-family: 'Amiri', serif;
+            font-size: 20px;
+            color: var(--brown-dark);
+        }
 
-    .brand-titles h1 {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--brown-primary);
-    }
+        .logo-text p {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
 
-    .brand-titles p {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
+        .notification-btn {
+            background: none;
+            border: 1px solid var(--border-color);
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: var(--brown-primary);
+            background-color: white;
+            transition: 0.2s;
+        }
 
-    .header-actions {
-      display: flex;
-      gap: 8px;
-    }
+        .notification-btn:hover {
+            background-color: var(--border-color);
+        }
 
-    .icon-btn {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      color: var(--brown-primary);
-      padding: 8px 14px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 13px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.2s;
-    }
+        /* User Profile & Setup Bar */
+        .user-setup-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
 
-    .icon-btn:hover {
-      background: #EFE8DC;
-      border-color: var(--gold-accent);
-    }
+        .user-setup-card h3 {
+            font-family: 'Amiri', serif;
+            font-size: 18px;
+            color: var(--brown-dark);
+        }
 
-    /* Student Progress Card */
-    .progress-card {
-      background: #FFFFFF;
-      border: 1.5px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      padding: 18px 20px;
-      margin: 16px 0;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.03);
-    }
+        .input-group {
+            display: flex;
+            gap: 10px;
+        }
 
-    .progress-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-    }
+        .input-group input, .input-group select {
+            flex: 1;
+            padding: 10px 14px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background-color: white;
+            font-size: 14px;
+            color: var(--text-main);
+            outline: none;
+        }
 
-    .progress-title {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--brown-primary);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+        .save-user-btn {
+            background-color: var(--brown-primary);
+            color: var(--gold-light);
+            border: none;
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
 
-    .percent-badge {
-      background: var(--brown-primary);
-      color: #FFFFFF;
-      padding: 3px 10px;
-      border-radius: 12px;
-      font-size: 13px;
-      font-weight: 700;
-    }
+        .save-user-btn:hover {
+            background-color: var(--brown-dark);
+        }
 
-    .progress-bar-bg {
-      width: 100%;
-      height: 10px;
-      background: #EFE8DC;
-      border-radius: 5px;
-      overflow: hidden;
-      margin-bottom: 12px;
-    }
+        /* Progress Bar */
+        .progress-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
 
-    .progress-bar-fill {
-      height: 100%;
-      width: 42%;
-      background: linear-gradient(90deg, var(--gold-accent), var(--brown-primary));
-      border-radius: 5px;
-      transition: width 0.4s ease;
-    }
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
 
-    .progress-stats {
-      display: flex;
-      justify-content: space-between;
-      font-size: 12px;
-      color: var(--text-muted);
-    }
+        .progress-header span strong {
+            color: var(--brown-dark);
+        }
 
-    /* Section Title */
-    .section-headline {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--brown-dark);
-      margin: 20px 0 14px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+        .percentage-badge {
+            background-color: var(--brown-primary);
+            color: var(--gold-light);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+        }
 
-    .section-headline::after {
-      content: '';
-      flex: 1;
-      height: 1.5px;
-      background: linear-gradient(to left, transparent, var(--border-color));
-    }
+        .progress-bar-container {
+            width: 100%;
+            height: 10px;
+            background-color: var(--border-color);
+            border-radius: 5px;
+            overflow: hidden;
+        }
 
-    /* Grid of Scholar Doors */
-    .doors-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 16px;
-    }
+        .progress-bar-fill {
+            width: 42%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-accent), var(--brown-primary));
+            border-radius: 5px;
+        }
 
-    /* Door Card: Aspect ratio 1:1, Distinct Shades of Brown */
-    .door-card {
-      aspect-ratio: 1 / 1;
-      border-radius: var(--radius-lg);
-      border: 1.5px solid rgba(196, 151, 70, 0.45);
-      position: relative;
-      cursor: pointer;
-      overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 16px;
-      color: #FFFFFF;
-      transition: transform 0.25s, box-shadow 0.25s;
-    }
+        .section-title {
+            font-family: 'Amiri', serif;
+            font-size: 18px;
+            color: var(--brown-dark);
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-    .door-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 24px rgba(60, 30, 15, 0.2);
-    }
+        /* Doors Grid */
+        .doors-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
 
-    /* Background Watermark */
-    .door-watermark {
-      position: absolute;
-      right: -10px;
-      bottom: -10px;
-      font-size: 110px;
-      opacity: 0.08;
-      pointer-events: none;
-      user-select: none;
-    }
+        .door-card {
+            background: linear-gradient(135deg, #3A2011 0%, #5C3821 100%);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            color: white;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--gold-accent);
+            box-shadow: 0 6px 20px rgba(58, 32, 17, 0.15);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
 
-    /* Top Row of Door */
-    .door-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 2;
-    }
+        .door-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(58, 32, 17, 0.25);
+        }
 
-    .door-emblem-badge {
-      background: rgba(0, 0, 0, 0.35);
-      border: 1px solid rgba(223, 190, 123, 0.5);
-      border-radius: 12px;
-      padding: 4px 10px;
-      font-size: 11px;
-      color: var(--gold-light);
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
+        .door-tag {
+            background-color: rgba(196, 151, 70, 0.25);
+            color: var(--gold-light);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            display: inline-block;
+            margin-bottom: 10px;
+            border: 1px solid rgba(196, 151, 70, 0.4);
+        }
 
-    .door-tag {
-      background: rgba(0, 0, 0, 0.25);
-      border-radius: 8px;
-      padding: 3px 8px;
-      font-size: 10px;
-      color: #F3E7D8;
-    }
+        .door-content h2 {
+            font-family: 'Amiri', serif;
+            font-size: 22px;
+            margin-bottom: 6px;
+            color: #FFF;
+        }
 
-    /* Center Emblem Circle */
-    .door-center-icon {
-      width: 60px;
-      height: 60px;
-      background: rgba(0, 0, 0, 0.25);
-      border: 1.5px solid rgba(223, 190, 123, 0.6);
-      border-radius: 50%;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      z-index: 2;
-    }
+        .door-content p {
+            font-size: 13px;
+            color: #E2D7C5;
+        }
 
-    /* Bottom Info of Door */
-    .door-bottom {
-      z-index: 2;
-    }
+        /* Modal Popup */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
 
-    .door-title {
-      font-size: 17px;
-      font-weight: 700;
-      color: #FFFFFF;
-      margin-bottom: 2px;
-    }
+        .modal-content {
+            background-color: var(--bg-parchment);
+            border: 2px solid var(--gold-accent);
+            border-radius: var(--radius-lg);
+            padding: 25px;
+            width: 100%;
+            max-width: 450px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            position: relative;
+        }
 
-    .door-sub {
-      font-size: 12px;
-      color: #EADBCE;
-    }
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: var(--brown-dark);
+        }
 
-    .gold-accent-line {
-      width: 30px;
-      height: 3px;
-      background: var(--gold-accent);
-      border-radius: 2px;
-      margin-top: 6px;
-    }
+        .modal-content h3 {
+            font-family: 'Amiri', serif;
+            font-size: 24px;
+            color: var(--brown-dark);
+        }
 
-    /* Brown Gradients for Each Door */
-    .door-nahw { background: linear-gradient(135deg, #4A3120, #2C1C11); }
-    .door-sarf { background: linear-gradient(135deg, #6B3E1F, #452410); }
-    .door-poetry { background: linear-gradient(135deg, #432216, #281108); }
-    .door-alfiyyah { background: linear-gradient(135deg, #5B3923, #3B2112); }
-    .door-exercises { background: linear-gradient(135deg, #724724, #4A2B12); }
-    .door-balaghah { background: linear-gradient(135deg, #643C1D, #3F230E); }
-    .door-modern { background: linear-gradient(135deg, #532819, #34150C); }
-    .door-videos { background: linear-gradient(135deg, #381F14, #200F08); }
+        .modal-content p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
 
-    /* Modal / Dialog */
-    .modal-overlay {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.55);
-      backdrop-filter: blur(3px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      padding: 16px;
-    }
+        .start-study-btn {
+            background-color: var(--brown-primary);
+            color: var(--gold-light);
+            border: none;
+            padding: 12px;
+            border-radius: var(--radius-md);
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            transition: 0.2s;
+        }
 
-    .modal-content {
-      background: var(--bg-parchment);
-      border: 1.5px solid var(--border-color);
-      border-radius: 24px;
-      width: 100%;
-      max-width: 480px;
-      padding: 24px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
-    }
-
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 16px;
-    }
-
-    .close-btn {
-      background: none;
-      border: none;
-      font-size: 20px;
-      cursor: pointer;
-      color: var(--text-muted);
-    }
-
-    .action-btn {
-      width: 100%;
-      background: var(--brown-primary);
-      color: white;
-      border: none;
-      padding: 12px;
-      border-radius: var(--radius-md);
-      font-size: 15px;
-      font-weight: 700;
-      cursor: pointer;
-      margin-top: 14px;
-      transition: background 0.2s;
-    }
-
-    .action-btn:hover {
-      background: var(--brown-dark);
-    }
-  </style>
+        .start-study-btn:hover {
+            background-color: var(--brown-dark);
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Top Header Navigation -->
-  <header>
-    <div class="nav-content">
-      <div class="brand-section">
-        <div class="dhad-logo">ض</div>
-        <div class="brand-titles">
-          <h1>منصة ضاد التعليمية</h1>
-          <p>أبواب علوم العربية وقواعدها</p>
+    <div class="container">
+        <header>
+            <div class="logo-area">
+                <div class="logo-icon">ض</div>
+                <div class="logo-text">
+                    <h1>منصة ضاد التعليمية</h1>
+                    <p>أبواب العلوم العربية وآدابها</p>
+                </div>
+            </div>
+            <button class="notification-btn" onclick="alert('لا توجد إشعارات جديدة حالياً')">
+                🔔 التنبيهات
+            </button>
+        </header>
+
+        <div class="user-setup-card" id="setupCard">
+            <h3>مرحباً بك يا طالب العلم</h3>
+            <div class="input-group">
+                <input type="text" id="studentNameInput" placeholder="اكتب اسمك الكامل هنا..." />
+                <select id="studentStageSelect">
+                    <option value="المرحلة الجامعية">المرحلة الجامعية</option>
+                    <option value="مرحلة الثانوية">المرحلة الثانوية</option>
+                    <option value="مرحلة الدراسات العليا">الدراسات العليا</option>
+                </select>
+            </div>
+            <button class="save-user-btn" onclick="saveStudentData()">حفظ وبدء الرحلة</button>
         </div>
-      </div>
-      <div class="header-actions">
-        <button class="icon-btn" onclick="openReminderModal()">
-          🔔 <span>التنبيهات</span>
-        </button>
-      </div>
+
+        <div class="progress-card">
+            <div class="progress-header">
+                <span id="welcomeText">شريط إنجاز الطالب في الأبواب والدروس</span>
+                <span class="percentage-badge">42%</span>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill"></div>
+            </div>
+        </div>
+
+        <div class="section-title">
+            📚 أبواب العلوم والآداب
+        </div>
+
+        <div class="doors-grid">
+            <div class="door-card" onclick="openDoor('باب البلاغة', 'علم البيان والمعاني والبديع')">
+                <span class="door-tag">ريشة البيان</span>
+                <div class="door-content">
+                    <h2>باب البلاغة</h2>
+                    <p>علم البيان والمعاني والبديع</p>
+                </div>
+            </div>
+
+            <div class="door-card" onclick="openDoor('باب النحو', 'ميزان الإعراب، الجمل، المبتدأ والخبر، والتوابع.')">
+                <span class="door-tag">ميزان الإعراب</span>
+                <div class="door-content">
+                    <h2>باب النحو</h2>
+                    <p>قواعد الإعراب والبناء</p>
+                </div>
+            </div>
+
+            <div class="door-card" onclick="openDoor('باب الصرف', 'بنية الكلمة، الميزان الصرفي، والمشتقات.')">
+                <span class="door-tag">الميزان الصرفي</span>
+                <div class="door-content">
+                    <h2>باب الصرف</h2>
+                    <p>بنية الكلمة وموازنتها</p>
+                </div>
+            </div>
+
+            <div class="door-card" onclick="openDoor('الشعر القديم', 'المعلقات والعصر الذهبي')">
+                <span class="door-tag">ديوان المعلقات</span>
+                <div class="door-content">
+                    <h2>الشعر القديم</h2>
+                    <p>المعلقات والعصر الذهبي</p>
+                </div>
+            </div>
+        </div>
     </div>
-  </header>
 
-  <div class="container">
-    
-    <!-- Student Learning Progress Card -->
-    <div class="progress-card">
-      <div class="progress-header">
-        <div class="progress-title">
-          <span>📊</span>
-          <span>شريط إنجاز الطالب في الأبواب والدروس</span>
+    <div class="modal" id="doorModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeDoor()">&times;</button>
+            <h3 id="modalTitle">عنوان الباب</h3>
+            <p id="modalDesc">وصف تفصيلي عن الباب ومحتواه التعليمي هنا...</p>
+            <button class="start-study-btn" onclick="alert('جاري فتح محتوى الباب المختار...')">بدء المذاكرة الآن</button>
         </div>
-        <div class="percent-badge">٤٢%</div>
-      </div>
-      <div class="progress-bar-bg">
-        <div class="progress-bar-fill"></div>
-      </div>
-      <div class="progress-stats">
-        <span>📖 المكتمل: ٥ مباحث دراسية</span>
-        <span>⏱️ الورد اليومي: نشط</span>
-      </div>
     </div>
 
-    <!-- Section Title -->
-    <div class="section-headline">
-      <span>📚 أبواب العلوم والآداب</span>
-    </div>
+    <script>
+        function saveStudentData() {
+            const name = document.getElementById('studentNameInput').value;
+            const stage = document.getElementById('studentStageSelect').value;
+            if(name.trim() !== "") {
+                document.getElementById('welcomeText').innerHTML = `أهلاً بك <strong>${name}</strong> (${stage})`;
+                alert("تم حفظ بياناتك بنجاح!");
+            } else {
+                alert("الرجاء كتابة الاسم أولاً.");
+            }
+        }
 
-    <!-- Authentic Square Brown Doors Grid -->
-    <div class="doors-grid">
+        function openDoor(title, desc) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerText = desc;
+            document.getElementById('doorModal').style.display = 'flex';
+        }
 
-      <!-- 1. Balaghah Door (Feather of Eloquence) -->
-      <div class="door-card door-balaghah" onclick="showDoorDetails('باب البلاغة', 'علم البيان والمعاني والبديع، وفنون القول العربي.')">
-        <div class="door-watermark">🪶</div>
-        <div class="door-top">
-          <div class="door-emblem-badge">🪶 ريشة البيان</div>
-          <div class="door-tag">البيان والبديع</div>
-        </div>
-        <div class="door-center-icon">🪶</div>
-        <div class="door-bottom">
-          <div class="door-title">باب البلاغة</div>
-          <div class="door-sub">علم البيان والمعاني والبديع</div>
-          <div class="gold-accent-line"></div>
-        </div>
-      </div>
-
-      <!-- 2. Nahw Door (Grammar Balance) -->
-      <div class="door-card door-nahw" onclick="showDoorDetails('باب النحو', 'ميزان الإعراب، الجمل، المبتدأ والخبر، والتوابع.')">
-        <div class="door-watermark">⚖️</div>
-        <div class="door-top">
-          <div class="door-emblem-badge">⚖️ ميزان الإعراب</div>
-          <div class="door-tag">٦ مباحث</div>
-        </div>
-        <div class="door-center-icon">⚖️</div>
-        <div class="door-bottom">
-          <div class="door-title">باب النحو</div>
-          <div class="door-sub">قواعد الإعراب والبناء</div>
-          <div class="gold-accent-line"></div>
-        </div>
-      </div>
-
-      <!-- 3. Sarf Door (Morphology Scales) -->
-      <div class="door-card door-sarf" onclick="showDoorDetails('باب الصرف', 'بنية الكلمة، الميزان الصرفي، والمشتقات.')">
-        <div class="door-watermark">📐</div>
-        <div class="door-top">
-          <div class="door-emblem-badge">📐 الميزان الصرفي</div>
-          <div class="door-tag">موازين الأفعال</div>
-        </div>
-        <div class="door-center-icon">📐</div>
-        <div class="door-bottom">
-          <div class="door-title">باب الصرف</div>
-          <div class="door-sub">بنية الكلمة وموازينها</div>
-          <div class="gold-accent-line"></div>
-        </div>
-      </div>
-
-      <!-- 4. Classical Poetry Door -->
-      <div class="door-card door-poetry" onclick="showDoorDetails('الشعر العربي القديم', 'ديوان العرب وشواهد المعلقات وشعراء العصر الذهبي.')">
-        <div class="door-watermark">📜</div>
-        <div class="door-top">
-          <div class="door-emblem-badge">📜 ديوان المعلقات</div>
-          <div class="door-tag">عيون القصائد</div>
-        </div>
-        <div class="door-center-icon">📜</div>
-        <div class="door-bottom">
-          <div class="door-title">الشعر القديم</div>
-          <div class="door-sub">المعلقات والعصر الذهبي</div>
-          <div class="gold-accent-line"></div>
-        </div>
-      </div>
-
-      <!-- 5. Alfiyyah Door -->
-      <div class="door-card door-alfiyyah" onclick="showDoorDetails('ألفية ابن مالك', 'شرح النظم التعليمي وشواهد كبار النحاة.')">
-        <div class="door-watermark">👑</div>
-        <div class="door-top">
-          <div class="door-emblem-badge">👑 تاج النظم الألفي</div>
-          <div class="door-tag">نظم الألفية</div>
-        </div>
-        <div class="door-center-icon">👑</div>
-        <div class="door-bottom">
-          <div class="door-title">ألفية ابن مالك</div>
-          <div class="door-sub">شرح النظم التعليمي</div>
-          <div class="gold-accent-line"></div>
-        </div>
-      </div>
-
-      <!-- 6. Exercises Door -->
-      <div class="door-card door-exercises" onclick="showDoorDetails('كتاب التمارين', 'اختبارات تفاعلية فورية وتطبيقات إعرابية.')">
-        <div class="door-watermark">✍️</div>
-        <div class="door-top">
-          <div class="door-emblem-badge">✍️ كراسة الاختبارات</div>
-          <div class="door-tag">اختبارات فورية</div>
-        </div>
-        <div class="door-center-icon">✍️</div>
-        <div class="door-bottom">
-          <div class="door-title">كتاب التمارين</div>
-          <div class="door-sub">تطبيقات عملية وشاملة</div>
-          <div class="gold-accent-line"></div>
-        </div>
-      </div>
-
-      <!-- 7. Modern Poetry Door -->
-      <div class="door-card door-modern" onclick="showDoorDetails('الشعر الحديث', 'روائع مدارس الإحياء والديوان والمهجر وقصائد التفعيلة.')">
-        <div class="door-watermark">🖋️</div>
-        <div class="door-top">
-          <div class="door-emblem-badge">🖋️ قلم التفعيلة</div>
-          <div class="door-tag">قصائد التفعيلة</div>
-        </div>
-        <div class="door-center-icon">🖋️</div>
-        <div class="door-bottom">
-          <div class="door-title">الشعر الحديث</div>
-          <div class="door-sub">روائع القصائد والمدارس</div>
-          <div class="gold-accent-line"></div>
-        </div>
-      </div>
-
-      <!-- 8. Video Lectures Door -->
-      <div class="door-card door-videos" onclick="showDoorDetails('المشاهدة المرئية', 'شروحات نخبة من علماء وخبراء اللغة العربية.')">
-        <div class="door-watermark">▶️</div>
-        <div class="door-top">
-          <div class="door-emblem-badge">▶️ شروحات مرئية</div>
-          <div class="door-tag">دروس فيديو</div>
-        </div>
-        <div class="door-center-icon">▶️</div>
-        <div class="door-bottom">
-          <div class="door-title">المشاهدة المرئية</div>
-          <div class="door-sub">شروحات يوتيوب منتقاة</div>
-          <div class="gold-accent-line"></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Interactive Detail Modal -->
-  <div class="modal-overlay" id="infoModal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 id="modalTitle" style="color: var(--brown-primary);">عنوان الباب</h3>
-        <button class="close-btn" onclick="closeModal('infoModal')">&times;</button>
-      </div>
-      <p id="modalDesc" style="color: var(--text-muted); font-size: 14px; line-height: 1.7;"></p>
-      <button class="action-btn" onclick="closeModal('infoModal')">بدء المذاكرة الآن</button>
-    </div>
-  </div>
-
-  <!-- Reminder Settings Modal -->
-  <div class="modal-overlay" id="reminderModal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 style="color: var(--brown-primary);">⏰ تنبيهات المذاكرة اليومية</h3>
-        <button class="close-btn" onclick="closeModal('reminderModal')">&times;</button>
-      </div>
-      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">
-        اختر الموعد الذي تود أن يذكّرك فيه المتصفح بوردك اليومي في لغة الضاد:
-      </p>
-      <input type="time" id="studyTime" value="19:00" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); font-size: 16px;">
-      <button class="action-btn" onclick="saveReminder()">حفظ الموعد وتفعيل الإشعار</button>
-    </div>
-  </div>
-
-  <script>
-    function showDoorDetails(title, desc) {
-      document.getElementById('modalTitle').textContent = title;
-      document.getElementById('modalDesc').textContent = desc;
-      document.getElementById('infoModal').style.display = 'flex';
-    }
-
-    function openReminderModal() {
-      document.getElementById('reminderModal').style.display = 'flex';
-    }
-
-    function closeModal(id) {
-      document.getElementById(id).style.display = 'none';
-    }
-
-    function saveReminder() {
-      const time = document.getElementById('studyTime').value;
-      if ("Notification" in window) {
-        Notification.requestPermission().then(permission => {
-          if (permission === "granted") {
-            alert(`تم تفعيل التنبيه اليومي بنجاح عند الساعة: ${time}`);
-          } else {
-            alert(`تم حفظ الموعد: ${time}`);
-          }
-        });
-      } else {
-        alert(`تم حفظ موعد المذاكرة: ${time}`);
-      }
-      closeModal('reminderModal');
-    }
-
-    // Close on clicking outside
-    window.onclick = function(e) {
-      if (e.target.classList.contains('modal-overlay')) {
-        e.target.style.display = 'none';
-      }
-    }
-  </script>
+        function closeDoor() {
+            document.getElementById('doorModal').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
