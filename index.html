@@ -50,7 +50,6 @@
             gap: 20px;
         }
 
-        /* نظام الصفحات المنفصلة التام */
         .page-section {
             display: none;
             flex-direction: column;
@@ -119,7 +118,6 @@
             background-color: var(--border-color);
         }
 
-        /* بطاقات محتوى الصفحات */
         .page-content-box {
             background-color: var(--bg-card);
             border: 1px solid var(--border-color);
@@ -169,7 +167,7 @@
             background-color: var(--brown-dark);
         }
 
-        /* Progress Card المتغيرة ديناميكياً */
+        /* Progress Card التفاعلية تبدأ من 0% */
         .progress-card {
             background-color: var(--bg-card);
             border: 1px solid var(--border-color);
@@ -206,7 +204,7 @@
         }
 
         .progress-bar-fill {
-            width: 25%; /* تبدأ بنسبة أولية وتتغير عبر الجافاسكريبت */
+            width: 0%; /* تبدأ من الصفر تماماً */
             height: 100%;
             background: linear-gradient(90deg, var(--gold-accent), var(--brown-primary));
             border-radius: 5px;
@@ -223,7 +221,6 @@
             gap: 8px;
         }
 
-        /* Doors Grid */
         .doors-grid {
             display: flex;
             flex-direction: column;
@@ -268,7 +265,6 @@
             color: #E2D7C5;
         }
 
-        /* Books & AI Styles */
         .book-item {
             background: white;
             padding: 14px;
@@ -296,7 +292,6 @@
             resize: vertical;
         }
 
-        /* Bottom Navigation Bar */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -353,23 +348,52 @@
             </button>
         </header>
 
-        <!-- ================= PAGE 1: HOME (أبواب العلوم والآداب + شريط الإنجاز المتغير) ================= -->
-        <div id="page-home" class="page-section active-page">
-            <!-- Progress Card المتغيرة -->
+        <!-- ================= PAGE 1: SETUP & PROFILE (صفحة تسجيل الطالب الافتتاحية) ================= -->
+        <div id="page-profile" class="page-section active-page">
+            <div class="section-title">👤 سجل بيانات طالب العلم لبدء الرحلة</div>
+            <div class="page-content-box">
+                <h3>أهلاً بك في منصة ضاد</h3>
+                <p style="font-size: 13px; color: var(--text-muted);">الرجاء إدخال اسمك والمرحلة الدراسية لتبدأ رحلتك في علوم العربية:</p>
+                <div class="input-group">
+                    <input type="text" id="studentNameInput" placeholder="اكتب اسمك الكامل هنا..." />
+                    <select id="studentStageSelect">
+                        <option value="المرحلة الجامعية">المرحلة الجامعية</option>
+                        <option value="مرحلة الثانوية">مرحلة الثانوية</option>
+                        <option value="مرحلة الدراسات العليا">الدراسات العليا</option>
+                    </select>
+                </div>
+                <button class="action-btn" onclick="saveStudentData()">حفظ وبدء الرحلة التعليمية 🚀</button>
+            </div>
+            
+            <div class="page-content-box">
+                <h3>إحصائيات الإنجاز الحالية</h3>
+                <div class="book-item">
+                    <span>نسبة الإنجاز في الأبواب</span>
+                    <strong id="profilePercentage">0%</strong>
+                </div>
+                <div class="book-item">
+                    <span>الحالة</span>
+                    <strong style="color: var(--brown-primary);">بانتظار تسجيل البيانات</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 2: HOME (أبواب العلوم والآداب + شريط الإنجاز المتغير من 0%) ================= -->
+        <div id="page-home" class="page-section">
             <div class="progress-card">
                 <div class="progress-header">
                     <span id="welcomeText">مرحباً بك، تتبع إنجازك في الأبواب</span>
-                    <span id="percentageBadge" class="percentage-badge">25%</span>
+                    <span id="percentageBadge" class="percentage-badge">0%</span>
                 </div>
                 <div class="progress-bar-container">
-                    <div id="progressBarFill" class="progress-bar-fill" style="width: 25%;"></div>
+                    <div id="progressBarFill" class="progress-bar-fill" style="width: 0%;"></div>
                 </div>
             </div>
 
             <div class="section-title">📚 أبواب العلوم والآداب</div>
 
             <div class="doors-grid">
-                <div class="door-card" onclick="completeDoor('باب البلاغة', 50)">
+                <div class="door-card" onclick="completeDoor('باب البلاغة', 25)">
                     <span class="door-tag">ريشة البيان</span>
                     <div class="door-content">
                         <h2>باب البلاغة</h2>
@@ -377,7 +401,7 @@
                     </div>
                 </div>
 
-                <div class="door-card" onclick="completeDoor('باب النحو', 75)">
+                <div class="door-card" onclick="completeDoor('باب النحو', 50)">
                     <span class="door-tag">ميزان الإعراب</span>
                     <div class="door-content">
                         <h2>باب النحو</h2>
@@ -385,7 +409,7 @@
                     </div>
                 </div>
 
-                <div class="door-card" onclick="completeDoor('باب الصرف', 90)">
+                <div class="door-card" onclick="completeDoor('باب الصرف', 75)">
                     <span class="door-tag">الميزان الصرفي</span>
                     <div class="door-content">
                         <h2>باب الصرف</h2>
@@ -403,7 +427,7 @@
             </div>
         </div>
 
-        <!-- ================= PAGE 2: DISCOVER (اكتشف الكتب - صفحة منفصلة) ================= -->
+        <!-- ================= PAGE 3: DISCOVER (اكتشف الكتب) ================= -->
         <div id="page-discover" class="page-section">
             <div class="section-title">🧭 اكتشف أمهات الكتب والمراجع</div>
             <div class="page-content-box">
@@ -427,7 +451,7 @@
             </div>
         </div>
 
-        <!-- ================= PAGE 3: ASK AI (اسأل AI - صفحة منفصلة) ================= -->
+        <!-- ================= PAGE 4: ASK AI (اسأل AI) ================= -->
         <div id="page-ai" class="page-section">
             <div class="section-title">💡 مساعد الذكاء الاصطناعي اللغوي</div>
             <div class="page-content-box">
@@ -439,40 +463,15 @@
             </div>
         </div>
 
-        <!-- ================= PAGE 4: PROFILE & SETUP (صفحة بيانات الطالب المستقلة) ================= -->
-        <div id="page-profile" class="page-section">
-            <div class="section-title">👤 ملف طالب العلم وبياناته</div>
-            <div class="page-content-box">
-                <h3>إعدادات وتعديل بيانات الطالب</h3>
-                <div class="input-group">
-                    <input type="text" id="studentNameInput" placeholder="اكتب اسمك الكامل هنا..." />
-                    <select id="studentStageSelect">
-                        <option value="المرحلة الجامعية">المرحلة الجامعية</option>
-                        <option value="مرحلة الثانوية">مرحلة الثانوية</option>
-                        <option value="مرحلة الدراسات العليا">الدراسات العليا</option>
-                    </select>
-                </div>
-                <button class="action-btn" onclick="saveStudentData()">حفظ البيانات الشخصية</button>
-            </div>
-            
-            <div class="page-content-box">
-                <h3>إحصائيات الإنجاز النشطة</h3>
-                <div class="book-item">
-                    <span>نسبة الإنجاز الحالية في الأبواب</span>
-                    <strong id="profilePercentage">25%</strong>
-                </div>
-                <div class="book-item">
-                    <span>الحالة الأكاديمية</span>
-                    <strong style="color: var(--brown-primary);">طالب علم نشط</strong>
-                </div>
-            </div>
-        </div>
-
     </div>
 
     <!-- Bottom Navigation Bar (Fixed) -->
     <nav class="bottom-nav">
-        <button id="nav-home" class="nav-item active" onclick="switchPage('home', this)">
+        <button id="nav-profile" class="nav-item active" onclick="switchPage('profile', this)">
+            <span>👤</span>
+            حسابي
+        </button>
+        <button id="nav-home" class="nav-item" onclick="switchPage('home', this)">
             <span>🏠</span>
             الرئيسية
         </button>
@@ -484,34 +483,29 @@
             <span>💡</span>
             اسأل AI
         </button>
-        <button id="nav-profile" class="nav-item" onclick="switchPage('profile', this)">
-            <span>👤</span>
-            حسابي
-        </button>
     </nav>
 
     <script>
-        let currentProgress = 25;
+        let currentProgress = 0;
 
         function saveStudentData() {
             const name = document.getElementById('studentNameInput').value;
             const stage = document.getElementById('studentStageSelect').value;
             if(name.trim() !== "") {
                 document.getElementById('welcomeText').innerHTML = `أهلاً بك يا <strong>${name}</strong> (${stage})`;
-                alert("تم حفظ بياناتك الشخصية بنجاح!");
-                switchPage('home', document.getElementById('nav-home')); // الانتقال تلقائياً للرئيسية بعد الحفظ
+                alert("تم حفظ بياناتك وبدء الرحلة بنجاح!");
+                switchPage('home', document.getElementById('nav-home')); // الانتقال التلقائي لصفحة الأبواب الرئيسية
             } else {
-                alert("الرجاء كتابة الاسم أولاً.");
+                alert("الرجاء كتابة الاسم الكامل أولاً.");
             }
         }
 
         function completeDoor(doorName, newPercentage) {
             currentProgress = newPercentage;
-            document.getElementById('percentageBadge.innerHTML') // safety
             document.getElementById('percentageBadge').innerText = newPercentage + '%';
             document.getElementById('progressBarFill').style.width = newPercentage + '%';
             document.getElementById('profilePercentage').innerText = newPercentage + '%';
-            alert(`أحسنتِ! تم إنجاز درس من (${doorName}). ارتفعت نسبة إنجازك إلى ${newPercentage}%`);
+            alert(`أحسنتِ! تم إنجاز درس من (${doorName}). ارتفعت نسبة إنجازك إلى ${newPercentage}% 🎯`);
         }
 
         function switchPage(pageId, btnElement) {
