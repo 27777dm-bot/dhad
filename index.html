@@ -39,7 +39,7 @@
             flex-direction: column;
             align-items: center;
             padding: 20px;
-            padding-bottom: 95px; /* مسافة لشريط التنقل السفلي */
+            padding-bottom: 100px; /* مسافة لشريط التنقل السفلي الثابت */
         }
 
         .container {
@@ -48,6 +48,18 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
+        }
+
+        /* نظام الصفحات المفصولة */
+        .page-section {
+            display: none;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .page-section.active-page {
+            display: flex;
         }
 
         header {
@@ -93,17 +105,13 @@
         }
 
         .notification-btn {
-            background: none;
+            background: white;
             border: 1px solid var(--border-color);
             padding: 8px 12px;
             border-radius: 20px;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
             font-size: 13px;
             color: var(--brown-primary);
-            background-color: white;
             transition: 0.2s;
         }
 
@@ -178,10 +186,6 @@
             color: var(--text-muted);
         }
 
-        .progress-header span strong {
-            color: var(--brown-dark);
-        }
-
         .percentage-badge {
             background-color: var(--brown-primary);
             color: var(--gold-light);
@@ -208,9 +212,9 @@
 
         .section-title {
             font-family: 'Amiri', serif;
-            font-size: 18px;
+            font-size: 20px;
             color: var(--brown-dark);
-            margin-top: 10px;
+            margin-top: 5px;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -229,16 +233,13 @@
             padding: 20px;
             color: white;
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
             border: 1px solid var(--gold-accent);
             box-shadow: 0 6px 20px rgba(58, 32, 17, 0.15);
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.2s;
         }
 
         .door-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(58, 32, 17, 0.25);
         }
 
         .door-tag {
@@ -264,7 +265,62 @@
             color: #E2D7C5;
         }
 
-        /* Bottom Navigation Bar */
+        /* Books & Full Pages Style */
+        .page-content-box {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .book-item {
+            background: white;
+            padding: 14px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .book-item strong {
+            color: var(--brown-primary);
+            font-family: 'Amiri', serif;
+            font-size: 17px;
+        }
+
+        .ai-chat-box {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .ai-input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            outline: none;
+            font-size: 14px;
+            background: white;
+            resize: vertical;
+        }
+
+        .ai-send-btn, .action-btn {
+            background-color: var(--brown-primary);
+            color: var(--gold-light);
+            border: none;
+            padding: 12px;
+            border-radius: var(--radius-md);
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        /* Bottom Navigation Bar (Fixed on all pages) */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -302,131 +358,12 @@
             color: var(--brown-primary);
             font-weight: bold;
         }
-
-        /* Modal Popup Window */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            padding: 20px;
-        }
-
-        .modal-content {
-            background-color: var(--bg-parchment);
-            border: 2px solid var(--gold-accent);
-            border-radius: var(--radius-lg);
-            padding: 25px;
-            width: 100%;
-            max-width: 480px;
-            max-height: 85vh;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            position: relative;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: none;
-            border: none;
-            font-size: 22px;
-            cursor: pointer;
-            color: var(--brown-dark);
-        }
-
-        .modal-content h3 {
-            font-family: 'Amiri', serif;
-            font-size: 22px;
-            color: var(--brown-dark);
-        }
-
-        .modal-content p, .modal-content li {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        .modal-content ul {
-            padding-right: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .book-item {
-            background: white;
-            padding: 10px 14px;
-            border-radius: var(--radius-md);
-            border: 1px solid var(--border-color);
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
-        }
-
-        .book-item strong {
-            color: var(--brown-primary);
-            font-family: 'Amiri', serif;
-            font-size: 16px;
-        }
-
-        .ai-chat-box {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .ai-input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            outline: none;
-            font-size: 14px;
-            background: white;
-        }
-
-        .ai-send-btn {
-            background-color: var(--brown-primary);
-            color: var(--gold-light);
-            border: none;
-            padding: 10px;
-            border-radius: var(--radius-md);
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .start-study-btn {
-            background-color: var(--brown-primary);
-            color: var(--gold-light);
-            border: none;
-            padding: 12px;
-            border-radius: var(--radius-md);
-            font-size: 15px;
-            font-weight: bold;
-            cursor: pointer;
-            text-align: center;
-            transition: 0.2s;
-        }
-
-        .start-study-btn:hover {
-            background-color: var(--brown-dark);
-        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- Header -->
+        <!-- Header المشترك -->
         <header>
             <div class="logo-area">
                 <div class="logo-icon">ض</div>
@@ -440,98 +377,154 @@
             </button>
         </header>
 
-        <!-- User Setup Card -->
-        <div class="user-setup-card" id="setupCard">
-            <h3>مرحباً بك يا طالب العلم</h3>
-            <div class="input-group">
-                <input type="text" id="studentNameInput" placeholder="اكتب اسمك الكامل هنا..." />
-                <select id="studentStageSelect">
-                    <option value="المرحلة الجامعية">المرحلة الجامعية</option>
-                    <option value="مرحلة الثانوية">مرحلة الثانوية</option>
-                    <option value="مرحلة الدراسات العليا">الدراسات العليا</option>
-                </select>
+        <!-- ================= PAGE 1: HOME (الرئيسية) ================= -->
+        <div id="page-home" class="page-section active-page">
+            <!-- User Setup Card -->
+            <div class="user-setup-card">
+                <h3>مرحباً بك يا طالب العلم</h3>
+                <div class="input-group">
+                    <input type="text" id="studentNameInput" placeholder="اكتب اسمك الكامل هنا..." />
+                    <select id="studentStageSelect">
+                        <option value="المرحلة الجامعية">المرحلة الجامعية</option>
+                        <option value="مرحلة الثانوية">مرحلة الثانوية</option>
+                        <option value="مرحلة الدراسات العليا">الدراسات العليا</option>
+                    </select>
+                </div>
+                <button class="save-user-btn" onclick="saveStudentData()">حفظ وبدء الرحلة</button>
             </div>
-            <button class="save-user-btn" onclick="saveStudentData()">حفظ وبدء الرحلة</button>
-        </div>
 
-        <!-- Progress Card -->
-        <div class="progress-card">
-            <div class="progress-header">
-                <span id="welcomeText">شريط إنجاز الطالب في الأبواب والدروس</span>
-                <span class="percentage-badge">42%</span>
-            </div>
-            <div class="progress-bar-container">
-                <div class="progress-bar-fill"></div>
-            </div>
-        </div>
-
-        <!-- Section Title -->
-        <div class="section-title">
-            📚 أبواب العلوم والآداب
-        </div>
-
-        <!-- Doors Grid -->
-        <div class="doors-grid">
-            <div class="door-card" onclick="openModal('door', 'باب البلاغة', 'علم البيان والمعاني والبديع - يضم دراسات في التشبيه، المجاز، الاستعارة، والكناية مع تطبيقات بلاغية.')">
-                <span class="door-tag">ريشة البيان</span>
-                <div class="door-content">
-                    <h2>باب البلاغة</h2>
-                    <p>علم البيان والمعاني والبديع</p>
+            <!-- Progress Card -->
+            <div class="progress-card">
+                <div class="progress-header">
+                    <span id="welcomeText">شريط إنجاز الطالب في الأبواب والدروس</span>
+                    <span class="percentage-badge">42%</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill"></div>
                 </div>
             </div>
 
-            <div class="door-card" onclick="openModal('door', 'باب النحو', 'ميزان الإعراب، الجمل، المبتدأ والخبر، والتوابع والأفعال العاملة.')">
-                <span class="door-tag">ميزان الإعراب</span>
-                <div class="door-content">
-                    <h2>باب النحو</h2>
-                    <p>قواعد الإعراب والبناء</p>
-                </div>
+            <!-- Section Title -->
+            <div class="section-title">
+                📚 أبواب العلوم والآداب
             </div>
 
-            <div class="door-card" onclick="openModal('door', 'باب الصرف', 'بنية الكلمة، الميزان الصرفي، الإعلال والإبدال، والمشتقات.')">
-                <span class="door-tag">الميزان الصرفي</span>
-                <div class="door-content">
-                    <h2>باب الصرف</h2>
-                    <p>بنية الكلمة وموازنتها</p>
+            <!-- Doors Grid -->
+            <div class="doors-grid">
+                <div class="door-card" onclick="alert('جاري الانتقال لدروس باب البلاغة...')">
+                    <span class="door-tag">ريشة البيان</span>
+                    <div class="door-content">
+                        <h2>باب البلاغة</h2>
+                        <p>علم البيان والمعاني والبديع</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="door-card" onclick="openModal('door', 'الشعر القديم', 'المعلقات والعصر الذهبي، دراسة تحليلية لديوان العرب وقصائد الفحول.')">
-                <span class="door-tag">ديوان المعلقات</span>
-                <div class="door-content">
-                    <h2>الشعر القديم</h2>
-                    <p>المعلقات والعصر الذهبي</p>
+                <div class="door-card" onclick="alert('جاري الانتقال لدروس باب النحو...')">
+                    <span class="door-tag">ميزان الإعراب</span>
+                    <div class="door-content">
+                        <h2>باب النحو</h2>
+                        <p>قواعد الإعراب والبناء</p>
+                    </div>
+                </div>
+
+                <div class="door-card" onclick="alert('جاري الانتقال لدروس باب الصرف...')">
+                    <span class="door-tag">الميزان الصرفي</span>
+                    <div class="door-content">
+                        <h2>باب الصرف</h2>
+                        <p>بنية الكلمة وموازنتها</p>
+                    </div>
+                </div>
+
+                <div class="door-card" onclick="alert('جاري الانتقال لدروس الشعر القديم...')">
+                    <span class="door-tag">ديوان المعلقات</span>
+                    <div class="door-content">
+                        <h2>الشعر القديم</h2>
+                        <p>المعلقات والعصر الذهبي</p>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <!-- ================= PAGE 2: DISCOVER (اكتشف الكتب) ================= -->
+        <div id="page-discover" class="page-section">
+            <div class="section-title">🧭 اكتشف أمهات الكتب والمراجع</div>
+            <div class="page-content-box">
+                <p>تصفح أبرز المصادر والمراجع الموصى بها لدراسة علوم العربية وآدابها:</p>
+                
+                <div class="book-item">
+                    <strong>معجم مقاييس اللغة</strong>
+                    <span>لأحمد بن فارس (في تأصيل جذور الكلمات العربية ومعانيها).</span>
+                </div>
+                <div class="book-item">
+                    <strong>أساس البلاغة</strong>
+                    <span>للزمخشري (في فنون البيان والمعاني والمجاز اللغوي).</span>
+                </div>
+                <div class="book-item">
+                    <strong>شرح ابن عقيل على ألفية ابن مالك</strong>
+                    <span>(المرجع الأساسي في قواعد النحو والإعراب).</span>
+                </div>
+                <div class="book-item">
+                    <strong>ديوان المعلقات العشر</strong>
+                    <span>(للاستشهاد الشعري وتحليل عيون الشعر الجاهلي).</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 3: ASK AI (اسأل AI) ================= -->
+        <div id="page-ai" class="page-section">
+            <div class="section-title">💡 مساعد الذكاء الاصطناعي اللغوي</div>
+            <div class="page-content-box">
+                <p>اكتب أي قاعدة نحوية، استفسار إعرابي، أو تحليل بلاغي لتجيبك المنصة فوراً:</p>
+                <div class="ai-chat-box">
+                    <textarea class="ai-input" rows="4" placeholder="مثال: ما إعراب جملة (جاء زيد ضاحكاً)؟"></textarea>
+                    <button class="ai-send-btn" onclick="alert('جاري تحليل السؤال وإرسال الإجابة...')">إرسال السؤال</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 4: PROFILE (حسابي) ================= -->
+        <div id="page-profile" class="page-section">
+            <div class="section-title">👤 ملف طالب العلم</div>
+            <div class="page-content-box">
+                <p>إحصائيات إنجازك ونشاطك الأكاديمي في المنصة:</p>
+                <div style="display:flex; flex-direction:column; gap:10px;">
+                    <div class="book-item">
+                        <span>نسبة الإنجاز العامة</span>
+                        <strong>42%</strong>
+                    </div>
+                    <div class="book-item">
+                        <span>الأبواب والمباحث المكتملة</span>
+                        <strong>5 مباحث دراسية</strong>
+                    </div>
+                    <div class="book-item">
+                        <span>حالة الورد اليومي</span>
+                        <strong style="color: green;">نشط ومنتظم</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <!-- Bottom Navigation Bar (Fixed on all views) -->
+    <!-- Bottom Navigation Bar (Fixed on all pages) -->
     <nav class="bottom-nav">
-        <button class="nav-item active" onclick="navAction('home')">
+        <button id="nav-home" class="nav-item active" onclick="switchPage('home', this)">
             <span>🏠</span>
             الرئيسية
         </button>
-        <button class="nav-item" onclick="openModal('discover')">
+        <button id="nav-discover" class="nav-item" onclick="switchPage('discover', this)">
             <span>🧭</span>
             اكتشف الكتب
         </button>
-        <button class="nav-item" onclick="openModal('ai')">
+        <button id="nav-ai" class="nav-item" onclick="switchPage('ai', this)">
             <span>💡</span>
             اسأل AI
         </button>
-        <button class="nav-item" onclick="openModal('profile')">
+        <button id="nav-profile" class="nav-item" onclick="switchPage('profile', this)">
             <span>👤</span>
             حسابي
         </button>
     </nav>
-
-    <!-- Unified Dynamic Modal Window -->
-    <div class="modal" id="globalModal">
-        <div class="modal-content" id="modalContainerContent">
-            <!-- Content will be injected dynamically via JavaScript -->
-        </div>
-    </div>
 
     <script>
         function saveStudentData() {
@@ -545,80 +538,21 @@
             }
         }
 
-        function openModal(type, title = '', desc = '') {
-            const container = document.getElementById('modalContainerContent');
-            
-            if (type === 'door') {
-                container.innerHTML = `
-                    <button class="modal-close" onclick="closeModal()">&times;</button>
-                    <h3>${title}</h3>
-                    <p>${desc}</p>
-                    <div style="background:var(--bg-card); padding:12px; border-radius:10px; border:1px solid var(--border-color);">
-                        <strong>محتويات الباب:</strong>
-                        <ul style="margin-top:5px;">
-                            <li>الدرس الأول: التأسيس والمفاهيم الأساسية</li>
-                            <li>الدرس الثاني: التطبيقات والتحليل النصي</li>
-                            <li>التمارين والاختبارات التفاعلية</li>
-                        </ul>
-                    </div>
-                    <button class="start-study-btn" onclick="alert('جاري بدء المحتوى التعليمي لهذا الباب...'); closeModal();">بدء المذاكرة الآن</button>
-                `;
-            } else if (type === 'discover') {
-                container.innerHTML = `
-                    <button class="modal-close" onclick="closeModal()">&times;</button>
-                    <h3>🧭 اكتشف أمهات الكتب والمراجع</h3>
-                    <p>أبرز الكتب والمصادر الموصى بها لدراسة علوم العربية:</p>
-                    <div class="book-item">
-                        <strong>معجم مقاييس اللغة</strong>
-                        <span>لأحمد بن فارس (في تأصيل جذور الكلمات العربية ومعانيها).</span>
-                    </div>
-                    <div class="book-item">
-                        <strong>أساس البلاغة</strong>
-                        <span>للزمخشري (في فنون البيان والمعاني والمجاز اللغوي).</span>
-                    </div>
-                    <div class="book-item">
-                        <strong>شرح ابن عقيل على ألفية ابن مالك</strong>
-                        <span>(المرجع الأساسي في قواعد النحو والإعراب).</span>
-                    </div>
-                    <div class="book-item">
-                        <strong>ديوان المعلقات العشر</strong>
-                        <span>(للاستشهاد الشعري وتحليل عيون الشعر الجاهلي).</span>
-                    </div>
-                `;
-            } else if (type === 'ai') {
-                container.innerHTML = `
-                    <button class="modal-close" onclick="closeModal()">&times;</button>
-                    <h3>💡 مساعد الذكاء الاصطناعي اللغوي</h3>
-                    <p>اكتب أي قاعدة نحوية، استفسار إعرابي، أو تحليل بلاغي لتجيبك المنصة فوراً:</p>
-                    <div class="ai-chat-box">
-                        <textarea class="ai-input" rows="3" placeholder="مثال: ما إعراب جملة (جاء زيد ضاحكاً)؟"></textarea>
-                        <button class="ai-send-btn" onclick="alert('جاري تحليل السؤال وإرسال الإجابة...'); closeModal();">إرسال السؤال</button>
-                    </div>
-                `;
-            } else if (type === 'profile') {
-                container.innerHTML = `
-                    <button class="modal-close" onclick="closeModal()">&times;</button>
-                    <h3>👤 ملف طالب العلم</h3>
-                    <p>إحصائيات إنجازك في المنصة:</p>
-                    <div style="background:var(--bg-card); padding:15px; border-radius:12px; display:flex; flex-direction:column; gap:8px;">
-                        <span>نسبة الإنجاز العامة: <strong>42%</strong></span>
-                        <span>الأبواب المكتملة: <strong>5 مباحث دراسية</strong></span>
-                        <span>الورد اليومي: <strong>نشط</strong></span>
-                    </div>
-                `;
-            }
+        function switchPage(pageId, btnElement) {
+            // إخفاء كل الصفحات
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(page => page.classList.remove('active-page'));
 
-            document.getElementById('globalModal').style.display = 'flex';
-        }
+            // إظهار الصفحة المطلوبة
+            document.getElementById('page-' + pageId).classList.add('active-page');
 
-        function closeModal() {
-            document.getElementById('globalModal').style.display = 'none';
-        }
+            // تحديث الأزرار في الشريط السفلي (تحديد الزر النشط)
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => item.classList.remove('active'));
+            btnElement.classList.add('active');
 
-        function navAction(action) {
-            if (action === 'home') {
-                window.scrollTo({top: 0, behavior: 'smooth'});
-            }
+            // التمرير لأعلى الصفحة بسلاسة
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
     </script>
 </body>
